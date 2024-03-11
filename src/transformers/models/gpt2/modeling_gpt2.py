@@ -1019,8 +1019,6 @@ class GPT2LMHeadModel(GPT2PreTrainedModel):
             position_ids.masked_fill_(attention_mask == 0, 1)
             if past_key_values:
                 position_ids = position_ids[:, -input_ids.shape[1] :]
-        else:
-            position_ids = None
 
         # if `inputs_embeds` are passed, we only want to use them in the 1st generation step
         if inputs_embeds is not None and past_key_values is None:
