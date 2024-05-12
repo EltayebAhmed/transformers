@@ -2209,7 +2209,7 @@ class Trainer:
                     steps_trained_progress_bar.close()
                     steps_trained_progress_bar = None
 
-                if step % args.gradient_accumulation_steps == 0:
+                if total_batched_samples % args.gradient_accumulation_steps == 0:
                     self.control = self.callback_handler.on_step_begin(args, self.state, self.control)
 
                 with self.accelerator.accumulate(model):
